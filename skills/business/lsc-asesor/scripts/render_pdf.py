@@ -56,6 +56,11 @@ def d(v, dec=2) -> str:
         return str(v)
 
 
+def odo(v: dict) -> str:
+    millas = v.get("odometro")
+    return f"{millas:,} mi" if millas else "—"
+
+
 CSS = f"""
 @page {{ size: Letter; margin: 0; }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -222,7 +227,7 @@ def html_seleccion(x: dict) -> str:
         f"<tr><td><b>{v.get('anio','')} {v.get('marca','')} {v.get('modelo','')}</b><br>"
         f'<span style="font-size:10.5px;color:#5A6673">{v.get("titulo","—")} · '
         f'{v.get("ubicacion","—")}</span></td>'
-        f'<td class="n">{(f"{v['odometro']:,} mi" if v.get("odometro") else "—")}</td>'
+        f'<td class="n">{odo(v)}</td>'
         f'<td class="n">{d(v.get("oferta_recomendada"), 0)}</td>'
         f'<td class="n"><b>{d(v.get("costo_total"))}</b></td>'
         f'<td>{v.get("fecha_subasta","—")}</td></tr>' for v in vs)
