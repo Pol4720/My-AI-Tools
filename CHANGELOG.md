@@ -28,11 +28,10 @@ The repository goes from empty to a complete, declared workspace.
     as a regression
 - **`q1-paper-auditor`** (research) — vendored from the account, authored 2026-08-14
 - **`thesis-auditor-fixer`** (research) — vendored from the account, authored 2026-05-18
-- **`lsc-asesor`** (business) — vendored from the account
 
 ### Added — configuration
 
-- `config/claude/inventory/` — declarative snapshot of 18 connectors, 12 skills and the
+- `config/claude/inventory/` — declarative snapshot of 18 connectors, 11 skills and the
   plugin state, with what each is for and whether it can be restored from a file
 - `config/claude/settings/` — Claude Code `settings.json` templates for user and project
   scope, with a read-only allowlist and a deny list covering force-push, hard reset and
@@ -53,17 +52,6 @@ The repository goes from empty to a complete, declared workspace.
 - `templates/skill/` — scaffold for the next skill
 - CI on four Python versions; issue and pull request templates; `.gitignore`,
   `.gitattributes`, `.editorconfig`
-
-### Fixed
-
-- **`lsc-asesor`: `scripts/render_pdf.py` crashed on Python 3.11.** A nested same-quote
-  f-string (`f'…{v['odometro']}…'`) is PEP 701 syntax, valid only on Python 3.12+, so the
-  module failed to import anywhere older — the PDF generator was unusable on the most
-  widely installed Python version. Extracted the expression into an `odo()` helper matching
-  the file's existing style; behaviour unchanged, compatibility restored.
-
-  Found by `scripts/validate_skills.py` on its first run, which is the argument for the
-  validator existing.
 
 ### Notes
 

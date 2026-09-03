@@ -1,13 +1,12 @@
 # Skills
 
-The four skills authored by [Pol4720](https://github.com/Pol4720), grouped by domain.
+The skills authored by [Pol4720](https://github.com/Pol4720), grouped by domain.
 
 | Skill | Domain | Does |
 |---|---|---|
 | [`repo-audit-fixer`](engineering/repo-audit-fixer/) | engineering | Audits a repository as a hostile QA engineer, security reviewer and staff engineer, fixes everything found, proves each fix, delivers a LaTeX audit report |
 | [`q1-paper-auditor`](research/q1-paper-auditor/) | research | Reviews a paper as a demanding Q1 referee, verifies every number against the data and code, repairs LaTeX to zero warnings, writes the response letter |
 | [`thesis-auditor-fixer`](research/thesis-auditor-fixer/) | research | The same standard for a CS/SE thesis in LaTeX — exact corrections, not just critique |
-| [`lsc-asesor`](business/lsc-asesor/) | business | Advisory engine for La Subasta Cubana: pre-qualification, cost modelling, comparison spreadsheets, client PDFs |
 
 ## Installing
 

@@ -58,7 +58,6 @@ upload:
 - [ ] `skills/engineering/repo-audit-fixer`
 - [ ] `skills/research/q1-paper-auditor`
 - [ ] `skills/research/thesis-auditor-fixer`
-- [ ] `skills/business/lsc-asesor`
 
 ### 1.3 Connect the research connectors · claude.ai → Settings → Connectors
 
@@ -131,8 +130,6 @@ Full reasoning in
       self-hosted tool is needed — see [`config/claude/mcp/README.md`](../config/claude/mcp/README.md).
 - [ ] Export any `${VAR}` referenced by `.mcp.json` in your shell profile. **Never** inline
       a token into the committed file.
-- [ ] For the `lsc-asesor` skill only:
-      `pip install requests beautifulsoup4 openpyxl pillow playwright && playwright install chromium`
 
 ---
 

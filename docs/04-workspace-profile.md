@@ -85,7 +85,6 @@ recognisable as a **regression** rather than rediscovered as news.
 | `repo-audit-fixer` | Generic code review finds style. Nothing generic hunts missing implementations, runs the software adversarially, and proves each fix. |
 | `q1-paper-auditor` | A referee who only complains does not help; the skill both finds and fixes, and verifies every number against the data and the code. |
 | `thesis-auditor-fixer` | The same standard for a CS/SE thesis, where LaTeX and citation integrity carry as much weight as the argument. |
-| `lsc-asesor` | A separate business domain with its own cost model and deliverables — kept in the same workspace, isolated in its own directory. |
 
 The common thread: **each was written because a generic tool did not encode the standard
 being applied.** That is the test for whether the next one is worth writing — see

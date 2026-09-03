@@ -1,9 +1,0 @@
-{
-  "_nota": "Mapeo de los parametros de filtro del inventario de lasubastacubana.com. Corre 'python3 scripts/buscar_inventario.py --descubrir' para descubrirlos y completa las claves de abajo. Mientras esten vacias, el script filtra por ruta y termina de filtrar en local: funciona igual, solo descarga un poco mas.",
-  "precio_min": "",
-  "precio_max": "",
-  "anio_min": "",
-  "anio_max": "",
-  "estado": "",
-  "subasta": ""
-}

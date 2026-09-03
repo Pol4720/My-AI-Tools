@@ -21,8 +21,7 @@ install.
 python3 scripts/validate_skills.py
 ```
 
-Expect four skills, one warning about `openpyxl` (a documented dependency of `lsc-asesor`,
-not installed by default). Anything else is a real problem.
+Expect every skill to validate clean. Anything else is a real problem.
 
 ## 3. Start a new session
 
@@ -88,12 +87,6 @@ corrections — rewritten paragraphs, fixed LaTeX, corrected citations — not j
 Review chapter 3 of my thesis.
 ```
 
-### `lsc-asesor` — business
-
-Advisory engine for La Subasta Cubana: pre-qualification, total-cost modelling, comparison
-spreadsheets, client PDFs. Needs
-`pip install requests beautifulsoup4 openpyxl pillow playwright`.
-
 ---
 
 ## Where to go next
@@ -122,5 +115,4 @@ own; remove it yourself, or install elsewhere with `--target`.
 a Markdown rendering and says so — it will not claim a PDF that does not exist.
 
 **A bundled script fails.** Run it directly: `python3 skills/<domain>/<name>/scripts/<x>.py --help`.
-Every script is standard-library only except `lsc-asesor`'s, which document their
-dependencies.
+Every script in this repository is standard-library only.

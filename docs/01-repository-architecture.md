@@ -9,11 +9,9 @@ My-AI-Tools/
 ├── skills/                 the assets — everything else serves these
 │   ├── engineering/
 │   │   └── repo-audit-fixer/
-│   ├── research/
-│   │   ├── q1-paper-auditor/
-│   │   └── thesis-auditor-fixer/
-│   └── business/
-│       └── lsc-asesor/
+│   └── research/
+│       ├── q1-paper-auditor/
+│       └── thesis-auditor-fixer/
 ├── config/claude/          the workspace, declared
 │   ├── inventory/          what the account has today
 │   ├── settings/           Claude Code settings.json templates
@@ -29,9 +27,10 @@ My-AI-Tools/
 
 ### 1. Skills are grouped by domain, not by type
 
-`skills/engineering/`, `skills/research/`, `skills/business/`. The alternative — a flat
-`skills/` directory — works fine at four skills and stops working at fifteen, and
-renaming directories later breaks every symlink an install script has created.
+`skills/engineering/`, `skills/research/`, and further domains as they arise. The
+alternative — a flat `skills/` directory — works fine at a handful of skills and stops
+working past a dozen, and renaming directories later breaks every symlink an install
+script has created.
 
 Domain grouping also carries information: a skill's location tells you the standards it
 should hold itself to. Anything under `research/` is expected to treat citation integrity

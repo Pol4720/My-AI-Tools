@@ -10,7 +10,6 @@ body:
         - repo-audit-fixer
         - q1-paper-auditor
         - thesis-auditor-fixer
-        - lsc-asesor
         - scripts/validate_skills.py
         - scripts/install_skills.sh
         - other

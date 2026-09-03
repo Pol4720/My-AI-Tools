@@ -35,15 +35,6 @@
       "summary": "Rigorous review and correction of CS/Software Engineering theses in LaTeX — produces exact corrections, not just diagnoses.",
       "created": "2026-05-18",
       "status": "enabled on claude.ai"
-    },
-    {
-      "name": "lsc-asesor",
-      "path": "skills/business/lsc-asesor",
-      "domain": "business",
-      "summary": "Advisory engine for La Subasta Cubana — vehicle auction pre-qualification, total-cost modelling, comparison spreadsheets and client PDF reports.",
-      "created": "unknown",
-      "status": "enabled on claude.ai",
-      "external_dependencies": ["requests", "beautifulsoup4", "openpyxl", "pillow", "playwright"]
     }
   ],
   "builtin": [

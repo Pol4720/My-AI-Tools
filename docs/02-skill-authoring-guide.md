@@ -144,8 +144,8 @@ A skill that has never been run on real work is a draft.
 3. **Negative trigger test.** Describe a *related but different* task. If it fires anyway,
    the description is too broad.
 4. **Run it end to end** on something real. Every skill in this repository found a bug in
-   its own scripts this way. The `lsc-asesor` syntax error that the validator caught had
-   been sitting in the skill unnoticed.
+   its own scripts this way — a syntax error the validator caught had been sitting
+   unnoticed until then.
 5. **Eval it.** `skill-creator` runs eval suites with variance analysis — the only way to
    know a description triggers reliably rather than once.
 

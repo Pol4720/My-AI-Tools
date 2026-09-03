@@ -39,7 +39,6 @@ Full walkthrough: [`docs/00-getting-started.md`](docs/00-getting-started.md).
 | [**`repo-audit-fixer`**](skills/engineering/repo-audit-fixer/) | engineering | Audits a repository as a hostile QA engineer, security reviewer and staff engineer at once — then fixes everything and proves each fix. Delivers a LaTeX audit report. |
 | [**`q1-paper-auditor`**](skills/research/q1-paper-auditor/) | research | Reviews a paper like a demanding Q1 referee, verifies every number against the data and code, repairs LaTeX to zero warnings, writes the response letter. |
 | [**`thesis-auditor-fixer`**](skills/research/thesis-auditor-fixer/) | research | The same standard for a CS/SE thesis in LaTeX — exact corrections, not just critique. |
-| [**`lsc-asesor`**](skills/business/lsc-asesor/) | business | Advisory engine for La Subasta Cubana: pre-qualification, total-cost modelling, comparison spreadsheets, client PDFs. |
 
 ### `repo-audit-fixer` in a paragraph
 
@@ -73,7 +72,7 @@ recognised as a **regression** rather than rediscovered as news.
 ## Layout
 
 ```
-skills/            engineering · research · business
+skills/            engineering · research
 config/claude/     inventory · settings · mcp · recommendations
 docs/              getting started · architecture · authoring · setup · profile
 scripts/           install_skills.sh · validate_skills.py
@@ -108,9 +107,6 @@ Python versions. It checks that each skill's front matter parses, that `name` ma
 directory, that `description` is substantial enough to trigger, that every file referenced
 in `SKILL.md` exists, that every bundled script parses and runs `--help`, and that nothing
 resembling a credential is committed.
-
-It has already earned its place: it caught a Python 3.12-only f-string in `lsc-asesor`
-that made one of its scripts unusable on 3.11.
 
 ```bash
 python3 scripts/validate_skills.py           # all skills
