@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/mcp.json",
+  "_comment": [
+    "ACTIVE project MCP configuration for My-AI-Tools — integrated from",
+    "config/claude/mcp/mcp.servers.json. Everyone opening this repo in Claude Code gets",
+    "these servers. Claude Code asks for approval before first use of each one.",
+    "",
+    "Only the credential-free `playwright` server is enabled: repo-audit-fixer drives web",
+    "UIs with it during Phase 3, and Chromium is preinstalled in Claude Code web sessions.",
+    "The `_disabled_*` entries need a credential or a path — move one into `mcpServers` and",
+    "export its ${VAR} in your shell to enable it. Never inline a token into this committed",
+    "file; use ${VAR}, which Claude Code expands from the environment at launch."
+  ],
+
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  },
+
+  "_disabled_postgres": {
+    "_why": "Read-only Postgres access. Lets an audit check the real schema — missing indexes, missing constraints, schema drift from the ORM models — instead of inferring it from code.",
+    "_setup": "Create a role with SELECT only. Never point this at a production database holding personal or clinical data.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL_READONLY}"]
+  },
+
+  "_disabled_filesystem": {
+    "_why": "Scoped filesystem access outside the project directory — a shared datasets folder, for example.",
+    "_setup": "List only the directories that are genuinely needed. Each one is standing access.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/absolute/path/to/allowed/dir"]
+  },
+
+  "_disabled_sqlite": {
+    "_why": "Local SQLite files — common in analysis and prototype work.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "./data/app.db"]
+  },
+
+  "_disabled_example_http_server": {
+    "_why": "Shape of a remote MCP server reached over HTTP, with a token from the environment.",
+    "type": "http",
+    "url": "https://mcp.example.com/v1",
+    "headers": { "Authorization": "Bearer ${EXAMPLE_MCP_TOKEN}" }
+  }
+}
