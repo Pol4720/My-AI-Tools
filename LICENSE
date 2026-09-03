@@ -1,0 +1,39 @@
+Copyright (c) 2026 Richard Matos (Pol4720). All rights reserved.
+
+This repository and its contents — including the skills under skills/, the scripts,
+the templates and the documentation — are the proprietary work of Richard Matos.
+
+No licence, express or implied, is granted to copy, modify, distribute, sublicense or
+create derivative works from this material, except as follows:
+
+1. Viewing and evaluation. Anyone with access to this repository may read it and evaluate
+   it.
+
+2. Personal and collaborative use. Individuals to whom the author has granted access may
+   install and use these skills in their own Claude workspace, and may adapt them for
+   their own work, provided that attribution to Richard Matos (Pol4720) is retained in any
+   adapted copy and that the adapted copy is not redistributed publicly.
+
+3. Redistribution requires the author's prior written permission.
+
+THIRD-PARTY MATERIAL
+
+This repository does not vendor, redistribute or claim ownership of any skill, plugin or
+connector authored by Anthropic or by any third party. Such components are recorded by
+name in config/claude/inventory/ purely so that the workspace can be described and
+rebuilt; they remain the property of their respective owners and are governed by their
+own terms.
+
+NO WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+These tools assist with software auditing and academic review. They do not replace
+professional judgement, and their output must be reviewed by a competent human before it
+is relied upon.
+
+For permissions beyond this notice, contact Richard Matos (@Pol4720).

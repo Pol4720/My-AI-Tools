@@ -1,0 +1,23 @@
+# Normalise line endings so a checkout on Windows does not produce a whole-file diff.
+* text=auto eol=lf
+
+*.sh    text eol=lf
+*.py    text eol=lf
+*.md    text eol=lf
+*.tex   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.pdf   binary
+*.xlsx  binary
+*.zip   binary
+
+# Keep generated and vendored material out of the language statistics, so the repository
+# is reported as what it mostly is: documentation and Python.
+skills/*/*/assets/**  linguist-vendored
+docs/**               linguist-documentation
