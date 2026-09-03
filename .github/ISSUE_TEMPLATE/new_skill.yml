@@ -1,0 +1,67 @@
+name: New skill proposal
+description: Propose a skill for this workspace
+labels: ["skill-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filling this in, read the test in
+        [`docs/02-skill-authoring-guide.md`](../blob/main/docs/02-skill-authoring-guide.md):
+        **would a generic tool already do this well?** Every skill here exists because the
+        answer was no — because it encodes a *standard*, not just a procedure.
+
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+      placeholder: ml-experiment-auditor
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options: [engineering, research, business, new domain]
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve
+      description: The concrete, recurring situation. Name a real instance where you needed it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why_not_generic
+    attributes:
+      label: Why an existing tool is not enough
+      description: Which built-in, plugin skill or existing skill comes closest, and exactly where it falls short. If nothing comes close, say that.
+    validations:
+      required: true
+
+  - type: textarea
+    id: triggers
+    attributes:
+      label: How it should trigger
+      description: The phrasings a user would actually type, in every language they would type them in. This becomes the `description` front matter, and it decides whether the skill ever fires.
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: What it delivers
+      description: The concrete output, and where it lands.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: What "finished" means
+      description: The checklist the skill should be able to verify itself against before it stops.
+    validations:
+      required: true

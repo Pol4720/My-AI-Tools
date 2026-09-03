@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Getting started
+    url: https://github.com/Pol4720/My-AI-Tools/blob/main/docs/00-getting-started.md
+    about: Installing the skills and confirming they work
+  - name: Rebuilding the workspace on a new account
+    url: https://github.com/Pol4720/My-AI-Tools/blob/main/docs/03-manual-setup-checklist.md
+    about: The ordered list of steps that require a human at a browser
+  - name: Writing a skill
+    url: https://github.com/Pol4720/My-AI-Tools/blob/main/docs/02-skill-authoring-guide.md
+    about: How to write one that actually triggers

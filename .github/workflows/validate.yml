@@ -1,0 +1,105 @@
+name: Validate
+
+# The quality gate for this repository. It runs the same command a contributor runs
+# locally — `python3 scripts/validate_skills.py` — so local green and CI green mean the
+# same thing. Nothing here uses continue-on-error: a gate that does not block is not a gate.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  skills:
+    name: Skills (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The oldest supported runtime matters most: a skill's scripts must run on the
+        # Python a contributor already has, not only on the newest one.
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Validate every skill
+        run: python3 scripts/validate_skills.py
+
+  shell:
+    name: Shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: shellcheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends shellcheck
+          shellcheck scripts/*.sh
+
+      - name: Install script is executable and self-consistent
+        run: |
+          test -x scripts/install_skills.sh
+          ./scripts/install_skills.sh --list
+          ./scripts/install_skills.sh --target "$(mktemp -d)"
+
+  report:
+    name: Audit report template compiles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install a LaTeX toolchain
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-lang-spanish lmodern latexmk
+
+      - name: Build the report in both languages, and require zero warnings
+        run: |
+          set -euo pipefail
+          SKILL=skills/engineering/repo-audit-fixer
+          for LANG_CODE in en es; do
+            DIR="$(mktemp -d)/audit-ci-${LANG_CODE}"
+            python3 "$SKILL/scripts/findings.py" --init "$DIR" --repo ci-smoke
+            python3 "$SKILL/scripts/findings.py" --validate "$DIR/findings.json"
+            python3 "$SKILL/scripts/build_report.py" --audit-dir "$DIR" --lang "$LANG_CODE"
+            test -f "$DIR/audit.pdf"
+            # The skill promises zero errors and zero warnings. Hold the template to it.
+            if grep -qE "Warning|Overfull|Underfull" "$DIR/audit.log"; then
+              echo "::error::LaTeX emitted warnings for --lang ${LANG_CODE}"
+              grep -E "Warning|Overfull|Underfull" "$DIR/audit.log"
+              exit 1
+            fi
+            echo "ok: ${LANG_CODE} builds clean"
+          done
+
+  secrets:
+    name: No committed secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
