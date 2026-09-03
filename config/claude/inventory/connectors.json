@@ -1,0 +1,143 @@
+{
+  "$comment": [
+    "Snapshot of the MCP connectors installed on the claude.ai account of Pol4720.",
+    "Captured 2026-09-03 from the live account (ListConnectors).",
+    "This file is DECLARATIVE — it records what should exist, so the workspace can be",
+    "rebuilt on a new account or shared with a colleague. Connectors cannot be installed",
+    "from a file: each one is added at claude.ai > Settings > Connectors, and the ones",
+    "with \"auth\": \"oauth\" additionally require an interactive login that only the",
+    "account owner can perform. See docs/03-manual-setup-checklist.md."
+  ],
+  "captured_at": "2026-09-03",
+  "account": "Pol4720 (Richard Matos)",
+  "plan": "Claude Pro",
+  "source": "claude.ai connector directory",
+  "connectors": [
+    {
+      "name": "bioRxiv",
+      "purpose": "bioRxiv and medRxiv preprint search and metadata",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Preprint discovery for vaccine and epidemiology work"
+    },
+    {
+      "name": "Clinical Trials",
+      "purpose": "ClinicalTrials.gov registry (NIH/NLM)",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Trial design, endpoint comparison, investigator search"
+    },
+    {
+      "name": "CMS Coverage",
+      "purpose": "Medicare Coverage Database (NCD/LCD)",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "US coverage policy lookups"
+    },
+    {
+      "name": "ICD-10 Codes",
+      "purpose": "ICD-10-CM and ICD-10-PCS code sets",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Diagnosis and procedure coding in clinical datasets"
+    },
+    {
+      "name": "Open Targets",
+      "purpose": "Drug target discovery and prioritisation platform",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Target–disease association evidence"
+    },
+    {
+      "name": "PopHIVE",
+      "purpose": "Yale harmonised US public-health surveillance data",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Surveillance trends, vaccination coverage, comparisons"
+    },
+    {
+      "name": "PubMed",
+      "purpose": "Biomedical literature search and full text",
+      "auth": "none",
+      "status": "connected",
+      "used_for": "Literature review; the citation backbone of the paper auditors"
+    },
+    {
+      "name": "Canva",
+      "purpose": "Search, create, autofill and export Canva designs",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Figures and presentation material"
+    },
+    {
+      "name": "Cloudflare Developer Platform",
+      "purpose": "Workers, D1, R2, KV, Hyperdrive",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Deployment and edge storage for web projects"
+    },
+    {
+      "name": "Consensus",
+      "purpose": "Scientific literature search with claim-level evidence",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Evidence synthesis; complements PubMed and Elicit"
+    },
+    {
+      "name": "Demographic and Health Surveys",
+      "purpose": "DHS Program indicator data",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Population health indicators by country and survey"
+    },
+    {
+      "name": "Elicit",
+      "purpose": "Paper search, systematic review and extraction",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Systematic reviews and structured extraction"
+    },
+    {
+      "name": "Figma",
+      "purpose": "Design context, diagrams, design-to-code",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "UI work and architecture diagrams"
+    },
+    {
+      "name": "Hugging Face",
+      "purpose": "Hub models, datasets, Spaces, papers",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Model and dataset discovery for ML projects"
+    },
+    {
+      "name": "Notion",
+      "purpose": "Workspace search, pages and databases",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Durable notes, project tracking, documentation"
+    },
+    {
+      "name": "Scholar Gateway",
+      "purpose": "Scholarly search and citation enrichment",
+      "auth": "oauth",
+      "status": "connected",
+      "used_for": "Citation verification during paper audits"
+    },
+    {
+      "name": "Microsoft 365",
+      "purpose": "SharePoint, OneDrive, Outlook, Teams",
+      "auth": "oauth",
+      "status": "installed_not_connected",
+      "note": "Present in the account but not authenticated and not enabled in chat. Connect it only if institutional documents are needed."
+    },
+    {
+      "name": "Monte Carlo",
+      "purpose": "Data and AI observability",
+      "auth": "oauth",
+      "status": "installed_not_connected",
+      "note": "Present in the account but not authenticated. Requires a Monte Carlo tenant."
+    }
+  ]
+}

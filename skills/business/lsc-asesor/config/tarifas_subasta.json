@@ -1,0 +1,10 @@
+{
+  "_nota": "ESTIMADO. LSC compra con tarifas de dealer, muy por debajo de las publicas. Punto de calibracion conocido del Excel oficial: $400 sobre $15,200 en IAAI (~2.6%). CALIBRA ESTE ARCHIVO con facturas reales a medida que las tengas: cada dato que agregues mejora todos los presupuestos.",
+  "_modelo": "pct = porcentaje sobre la oferta; min/max acotan el resultado. Alternativamente usa {\"fijo\": 400}.",
+  "_como_calibrar": "Cuando tengas una factura real: tarifa_real / oferta * 100 = pct de ese rango. Si ves que el pct varia mucho por rango, avisa y partimos la tabla en escalones.",
+  "COPART":   { "pct": 2.8, "min": 150, "max": 700 },
+  "IAAI":     { "pct": 2.6, "min": 150, "max": 700 },
+  "ACV":      { "pct": 2.5, "min": 150, "max": 700 },
+  "MANHEIM":  { "pct": 2.5, "min": 150, "max": 700 },
+  "OPENLANE": { "pct": 2.5, "min": 150, "max": 700 }
+}

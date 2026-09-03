@@ -1,0 +1,11 @@
+{
+  "_nota": "ESTIMADO por distancia. La cotizacion real sale de SuperDispatch. Si LSC activa la Pricing Insights API, exporta SUPERDISPATCH_API_KEY y el estimado se sustituye por precio real de mercado de la ruta.",
+  "_calibrar": "Cada vez que cierres un transporte real, ajusta el tramo correspondiente. Los precios suben en invierno y en rutas hacia el noreste.",
+  "tramos": [
+    { "hasta_millas": 250,   "precio": 350 },
+    { "hasta_millas": 500,   "precio": 500 },
+    { "hasta_millas": 1000,  "precio": 700 },
+    { "hasta_millas": 1800,  "precio": 950 },
+    { "hasta_millas": 99999, "precio": 1300 }
+  ]
+}

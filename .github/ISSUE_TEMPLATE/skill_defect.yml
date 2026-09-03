@@ -1,0 +1,71 @@
+name: Skill defect
+description: A skill misbehaves, does not trigger, or produces the wrong result
+labels: ["defect"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill
+      options:
+        - repo-audit-fixer
+        - q1-paper-auditor
+        - thesis-auditor-fixer
+        - lsc-asesor
+        - scripts/validate_skills.py
+        - scripts/install_skills.sh
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of defect
+      options:
+        - Did not trigger when it should have
+        - Triggered when it should not have
+        - Produced a wrong or incomplete result
+        - A bundled script failed
+        - Stopped partway through
+        - Documentation is wrong
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you asked for, and what you got instead. Paste the exact prompt if triggering is the issue — the wording is the evidence.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should have happened
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: The smallest sequence that shows it. A defect that cannot be reproduced is a hypothesis — the same standard the audit skill holds itself to.
+      placeholder: |
+        1. Fresh session
+        2. Prompt: "..."
+        3. Observed: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      value: |
+        - Claude Code / claude.ai:
+        - OS:
+        - Python (`python3 --version`):
+        - `python3 scripts/validate_skills.py` output:
+    validations:
+      required: true

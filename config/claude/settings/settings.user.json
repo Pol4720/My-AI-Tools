@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_comment": [
+    "Personal Claude Code settings for Pol4720 — copy to ~/.claude/settings.json.",
+    "This is a STARTING POINT, not a snapshot: the account currently runs the Claude",
+    "Code defaults. Everything here is opt-in; delete what you do not want.",
+    "JSON has no comment syntax, so the underscore-prefixed keys carry the notes.",
+    "Claude Code ignores unknown keys, but keep them tidy anyway.",
+    "",
+    "Precedence, lowest to highest:",
+    "  ~/.claude/settings.json            personal, all projects  (this file)",
+    "  <project>/.claude/settings.json    project, committed      (settings.project.json)",
+    "  <project>/.claude/settings.local.json  project, gitignored — machine-specific only",
+    "",
+    "NEVER put an API key, token or password in any of these files. They are committed."
+  ],
+
+  "_comment_permissions": [
+    "Read-only commands pre-approved so routine work does not stop for a prompt.",
+    "Nothing here can modify the working tree, the remote, or anything outside it.",
+    "The `deny` list is the important half: it blocks destructive and history-rewriting",
+    "operations even when a permission mode would otherwise allow them."
+  ],
+  "permissions": {
+    "allow": [
+      "Skill",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote -v)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(rg:*)",
+      "Bash(python3 -m pytest:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff check:*)",
+      "Bash(mypy:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(go test:*)",
+      "Bash(go vet:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(make test:*)",
+      "Bash(make lint:*)",
+      "Bash(latexmk:*)",
+      "Bash(pdflatex:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fdx:*)",
+      "Bash(rm -rf /*)",
+      "Bash(sudo:*)",
+      "Bash(curl:*|*sh)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/id_rsa)",
+      "Read(**/id_ed25519)",
+      "Read(**/*.pem)",
+      "Read(**/credentials.json)",
+      "Read(**/secrets.*)"
+    ]
+  },
+
+  "_comment_env": [
+    "Environment variables for every session. Values only — never secrets.",
+    "PYTHONDONTWRITEBYTECODE keeps __pycache__ out of the working tree during audits,",
+    "so `git status` stays readable while Claude is running scripts."
+  ],
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+
+  "_comment_hooks": [
+    "Hooks are commands the HARNESS runs at lifecycle points — Claude cannot be asked to",
+    "remember to do them, which is precisely why they exist. See docs and the",
+    "`update-config` skill for the full event list and the JSON each event receives.",
+    "",
+    "None are enabled by default here. The two below are commented-out examples of the",
+    "hooks most worth having; move them into a real `hooks` key to activate.",
+    "",
+    "  PostToolUse on Edit|Write  -> run the formatter on the file that changed",
+    "  PreToolUse  on Bash        -> block a command pattern before it runs",
+    "  Stop                       -> warn about uncommitted work at the end of a turn"
+  ],
+  "_hooks_example": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ \"${CLAUDE_FILE_PATH##*.}\" = \"py\" ]; then ruff format \"$CLAUDE_FILE_PATH\" 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

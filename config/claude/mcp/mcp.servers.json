@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/mcp.json",
+  "_comment": [
+    "Template for a Claude Code PROJECT MCP configuration — copy to <project>/.mcp.json",
+    "and commit it. Everyone on the project then gets the same servers.",
+    "",
+    "This is the escape hatch for anything the claude.ai connector directory does not",
+    "offer: a local database, a self-hosted tool, a community server. claude.ai connectors",
+    "and these are separate mechanisms and do not see each other.",
+    "",
+    "Every server below is COMMENTED OUT (prefixed `_disabled_`). Move an entry into the",
+    "real `mcpServers` object to enable it, and delete the ones you do not use.",
+    "",
+    "CREDENTIALS: never inline. Use ${VAR} — Claude Code expands it from the environment",
+    "at launch. This file is committed; the environment is not.",
+    "",
+    "Claude Code will ask for approval before using a project MCP server the first time.",
+    "That prompt is a security boundary, not an annoyance: an MCP server runs with your",
+    "privileges and its tool descriptions enter the model's context. Only enable servers",
+    "you have reason to trust."
+  ],
+
+  "mcpServers": {},
+
+  "_disabled_postgres": {
+    "_why": "Read-only Postgres access. Lets an audit check the real schema — missing indexes, missing constraints, schema drift from the ORM models — instead of inferring it from code.",
+    "_setup": "Create a role with SELECT only. Never point this at a production database holding personal or clinical data.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL_READONLY}"]
+  },
+
+  "_disabled_filesystem": {
+    "_why": "Scoped filesystem access outside the project directory — a shared datasets folder, for example.",
+    "_setup": "List only the directories that are genuinely needed. Each one is standing access.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/absolute/path/to/allowed/dir"]
+  },
+
+  "_disabled_playwright": {
+    "_why": "Browser automation for driving a web UI during Phase 3 of an audit — the four states, hostile inputs, accessibility checks.",
+    "_setup": "Chromium is preinstalled in Claude Code web sessions; locally, run `npx playwright install chromium` once.",
+    "command": "npx",
+    "args": ["-y", "@playwright/mcp@latest"]
+  },
+
+  "_disabled_sqlite": {
+    "_why": "Local SQLite files — common in analysis and prototype work.",
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "./data/app.db"]
+  },
+
+  "_disabled_example_http_server": {
+    "_why": "Shape of a remote MCP server reached over HTTP, with a token from the environment.",
+    "type": "http",
+    "url": "https://mcp.example.com/v1",
+    "headers": { "Authorization": "Bearer ${EXAMPLE_MCP_TOKEN}" }
+  }
+}
