@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_comment": [
+    "Project-scoped Claude Code settings — copy to <project>/.claude/settings.json and",
+    "COMMIT it. Everyone working on the project gets the same behaviour.",
+    "",
+    "This template is tuned for the kind of project audited by the repo-audit-fixer skill:",
+    "it makes the quality gate cheap to run and makes the destructive things impossible.",
+    "",
+    "Machine-specific values belong in .claude/settings.local.json, which is gitignored.",
+    "NEVER put an API key, token or password in this file — it is committed."
+  ],
+
+  "permissions": {
+    "_comment": [
+      "Allow the project's own gate commands, so an audit or a review never stops to ask",
+      "permission to run the checks the project already defines.",
+      "Deny anything that rewrites history or reaches a remote without a human deciding."
+    ],
+    "allow": [
+      "Bash(make test:*)",
+      "Bash(make lint:*)",
+      "Bash(make build:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff check:*)",
+      "Bash(mypy:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git rebase:*)",
+      "Bash(git commit --amend:*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.pem)"
+    ]
+  },
+
+  "_comment_audit": [
+    "If this project is audited with the repo-audit-fixer skill, keep Reports/ COMMITTED.",
+    "The accumulated audit history is the point: it is what turns a returning defect into",
+    "a Critical regression finding rather than a fresh discovery. Do not gitignore it."
+  ]
+}

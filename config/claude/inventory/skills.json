@@ -1,0 +1,68 @@
+{
+  "$comment": [
+    "Snapshot of the skills enabled on the claude.ai account of Pol4720.",
+    "Captured 2026-09-03 from the live account (ListSkills).",
+    "Two kinds are recorded separately, because only one kind is portable:",
+    "  - owned:   authored by Pol4720. Their source lives in this repository under",
+    "             skills/ and can be reinstalled anywhere with scripts/install_skills.sh.",
+    "  - builtin: provided by Anthropic. They are enabled per account at",
+    "             claude.ai > Settings > Capabilities. Their source is NOT vendored here",
+    "             — it is Anthropic's, and it is updated upstream."
+  ],
+  "captured_at": "2026-09-03",
+  "account": "Pol4720 (Richard Matos)",
+  "owned": [
+    {
+      "name": "repo-audit-fixer",
+      "path": "skills/engineering/repo-audit-fixer",
+      "domain": "engineering",
+      "summary": "Audits an entire repository as a hostile QA engineer, security reviewer and staff engineer, fixes everything found, proves each fix, and delivers a LaTeX audit report into Reports/audit-<timestamp>/.",
+      "created": "2026-09-03",
+      "status": "in this repository; enable it on claude.ai or install it locally"
+    },
+    {
+      "name": "q1-paper-auditor",
+      "path": "skills/research/q1-paper-auditor",
+      "domain": "research",
+      "summary": "Audits a scientific paper as a demanding Q1 referee, verifies every number against the data and code, repairs LaTeX to zero warnings, and writes an audit report plus a response letter.",
+      "created": "2026-08-14",
+      "status": "enabled on claude.ai"
+    },
+    {
+      "name": "thesis-auditor-fixer",
+      "path": "skills/research/thesis-auditor-fixer",
+      "domain": "research",
+      "summary": "Rigorous review and correction of CS/Software Engineering theses in LaTeX — produces exact corrections, not just diagnoses.",
+      "created": "2026-05-18",
+      "status": "enabled on claude.ai"
+    },
+    {
+      "name": "lsc-asesor",
+      "path": "skills/business/lsc-asesor",
+      "domain": "business",
+      "summary": "Advisory engine for La Subasta Cubana — vehicle auction pre-qualification, total-cost modelling, comparison spreadsheets and client PDF reports.",
+      "created": "unknown",
+      "status": "enabled on claude.ai",
+      "external_dependencies": ["requests", "beautifulsoup4", "openpyxl", "pillow", "playwright"]
+    }
+  ],
+  "builtin": [
+    {"name": "skill-creator", "summary": "Create, edit, evaluate and benchmark skills"},
+    {"name": "canvas-design", "summary": "Original visual art as PNG and PDF"},
+    {"name": "docx", "summary": "Read, write and edit Word documents"},
+    {"name": "xlsx", "summary": "Read, write and edit spreadsheets"},
+    {"name": "pptx", "summary": "Read, write and edit PowerPoint decks"},
+    {"name": "pdf", "summary": "Read, extract, merge, split, fill and OCR PDFs"},
+    {"name": "import-memory", "summary": "Import a memory export from another assistant"},
+    {"name": "morning", "summary": "Recurring morning brief as an artifact"}
+  ],
+  "builtin_available_in_claude_code": {
+    "$comment": "Shipped with the Claude Code harness rather than enabled per account. Listed so the workspace can be described completely.",
+    "names": [
+      "code-review", "security-review", "simplify", "run", "init", "loop",
+      "dataviz", "artifact-design", "artifact-diagramming", "artifact-capabilities",
+      "design", "update-config", "keybindings-help", "fewer-permission-prompts",
+      "claude-api", "session-start-hook"
+    ]
+  }
+}
