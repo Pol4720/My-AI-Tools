@@ -22,7 +22,7 @@ Do this first; it needs nothing but the repository.
 git clone https://github.com/Pol4720/My-AI-Tools.git
 cd My-AI-Tools
 ./scripts/install_skills.sh          # symlinks every skill into ~/.claude/skills/
-python3 scripts/validate_skills.py   # confirms all four are healthy
+python3 scripts/validate_skills.py   # confirms all three are healthy
 
 cp config/claude/settings/settings.user.json ~/.claude/settings.json
 ```
@@ -32,6 +32,23 @@ cp config/claude/settings/settings.user.json ~/.claude/settings.json
 - [ ] New Claude Code session started (settings load at session start)
 
 Everything below this line needs you.
+
+---
+
+## Where the live account stands today
+
+This checklist is written for a **rebuild on a fresh account**, so its boxes start empty.
+For what Pol4720's account actually has right now — captured 2026-09-03 from `ListSkills`,
+`ListPlugins` and `ListConnectors` — see [`config/claude/inventory/`](../config/claude/inventory/).
+The short version, because the gap is larger than it looks:
+
+| Step | State on the live account |
+|---|---|
+| 1.1 built-in skills | 7 of 8 enabled — **`canvas-design` is missing** |
+| 1.2 owned skills on claude.ai | only `q1-paper-auditor` uploaded; the other two are project skills here |
+| 1.3 authless research connectors | only PubMed and CMS Coverage — **bioRxiv, Clinical Trials, Open Targets, ICD-10 Codes and PopHIVE are not installed**, and none of them needs a login |
+| 1.4 OAuth connectors | Notion, Figma, Canva, Scholar Gateway connected — **Hugging Face, Consensus and Cloudflare absent; Elicit present but unauthenticated** |
+| 1.5 plugins | **none of the four installed** |
 
 ---
 
@@ -137,7 +154,7 @@ Full reasoning in
 
 Do not skip this. A half-configured workspace fails quietly.
 
-- [ ] `python3 scripts/validate_skills.py` → 4 skills valid
+- [ ] `python3 scripts/validate_skills.py` → 3 skills valid
 - [ ] In a fresh Claude session: *"List my enabled skills, plugins and connectors."*
       Compare against [`config/claude/inventory/`](../config/claude/inventory/).
 - [ ] Trigger a skill without naming it — e.g. *"audit this repository"* should reach

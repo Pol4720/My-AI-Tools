@@ -1,6 +1,6 @@
 # Recommended skills
 
-Eight Anthropic built-in skills are enabled on the account, four skills are owned and live
+Seven Anthropic built-in skills are enabled on the account, three skills are owned and live
 in this repository, and the Claude Code harness ships another sixteen that need no
 enabling at all. The gaps are small — and most of what is missing is better written than
 installed, because a skill that encodes *your* standards beats a generic one.
@@ -9,9 +9,11 @@ installed, because a skill that encodes *your* standards beats a generic one.
 
 ## Built-in skills already enabled
 
-`skill-creator` · `canvas-design` · `docx` · `xlsx` · `pptx` · `pdf` · `import-memory` · `morning`
+`skill-creator` · `docx` · `xlsx` · `pptx` · `pdf` · `import-memory` · `morning`
 
-Nothing here is redundant. `pdf` and `xlsx` in particular are load-bearing: the paper
+`canvas-design` is **not** enabled, despite an earlier snapshot claiming it was — enable it
+at claude.ai → Settings → Capabilities if original visual art is wanted, or drop it from the
+checklist. Nothing else here is redundant. `pdf` and `xlsx` in particular are load-bearing: the paper
 auditors use `pdf` to read reference PDFs, and `xlsx` handles the data files that arrive
 from collaborators.
 

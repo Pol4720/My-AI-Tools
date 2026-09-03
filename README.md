@@ -23,7 +23,7 @@ file can never rebuild.
 git clone https://github.com/Pol4720/My-AI-Tools.git
 cd My-AI-Tools
 ./scripts/install_skills.sh          # symlink every skill into ~/.claude/skills/
-python3 scripts/validate_skills.py   # confirm all four are healthy
+python3 scripts/validate_skills.py   # confirm all three are healthy
 ```
 
 Start a new Claude Code session and, without naming any skill:

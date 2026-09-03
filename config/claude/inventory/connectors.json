@@ -1,143 +1,211 @@
 {
   "$comment": [
     "Snapshot of the MCP connectors installed on the claude.ai account of Pol4720.",
-    "Captured 2026-09-03 from the live account (ListConnectors).",
-    "This file is DECLARATIVE — it records what should exist, so the workspace can be",
-    "rebuilt on a new account or shared with a colleague. Connectors cannot be installed",
-    "from a file: each one is added at claude.ai > Settings > Connectors, and the ones",
-    "with \"auth\": \"oauth\" additionally require an interactive login that only the",
-    "account owner can perform. See docs/03-manual-setup-checklist.md."
+    "Re-captured 2026-09-03 from the live account (ListConnectors) after the previous",
+    "snapshot was found to be aspirational rather than observed: eleven connectors it",
+    "listed as \"connected\" are not installed on the account at all, and seventeen that",
+    "are installed were absent from it. The file below records what ListConnectors",
+    "actually returns.",
+    "",
+    "This file is DECLARATIVE — it records what exists, so the workspace can be rebuilt",
+    "on a new account or shared with a colleague. Connectors cannot be installed from a",
+    "file: each one is added at claude.ai > Settings > Connectors, and the ones with",
+    "\"auth\": \"oauth\" additionally require an interactive login that only the account",
+    "owner can perform. See docs/03-manual-setup-checklist.md.",
+    "",
+    "Three states are distinguished, because they are not the same thing:",
+    "  connected              installed, authenticated, and its tools load in a session.",
+    "  installed_unconfirmed  present on the account, but ListConnectors reports its auth",
+    "                         state as unknown and it is not enabled in chat. Either it",
+    "                         was never authenticated, or it is toggled off.",
+    "  not_installed          named in the setup checklist but absent from the account."
   ],
   "captured_at": "2026-09-03",
+  "captured_with": "ListConnectors, from a live Claude Code session",
   "account": "Pol4720 (Richard Matos)",
   "plan": "Claude Pro",
   "source": "claude.ai connector directory",
-  "connectors": [
+
+  "connected": [
     {
-      "name": "bioRxiv",
-      "purpose": "bioRxiv and medRxiv preprint search and metadata",
+      "name": "PubMed",
+      "purpose": "Biomedical literature search and full text",
       "auth": "none",
-      "status": "connected",
-      "used_for": "Preprint discovery for vaccine and epidemiology work"
-    },
-    {
-      "name": "Clinical Trials",
-      "purpose": "ClinicalTrials.gov registry (NIH/NLM)",
-      "auth": "none",
-      "status": "connected",
-      "used_for": "Trial design, endpoint comparison, investigator search"
+      "used_for": "Literature review; the citation backbone of the paper auditors"
     },
     {
       "name": "CMS Coverage",
       "purpose": "Medicare Coverage Database (NCD/LCD)",
       "auth": "none",
-      "status": "connected",
       "used_for": "US coverage policy lookups"
     },
     {
-      "name": "ICD-10 Codes",
-      "purpose": "ICD-10-CM and ICD-10-PCS code sets",
+      "name": "ChEMBL",
+      "purpose": "EMBL-EBI ChEMBL bioactivity and drug database",
       "auth": "none",
-      "status": "connected",
-      "used_for": "Diagnosis and procedure coding in clinical datasets"
+      "used_for": "Compound, target and mechanism lookups"
     },
     {
-      "name": "Open Targets",
-      "purpose": "Drug target discovery and prioritisation platform",
+      "name": "Mermaid Chart",
+      "purpose": "Validates Mermaid syntax and renders diagrams as SVG",
       "auth": "none",
-      "status": "connected",
-      "used_for": "Target–disease association evidence"
+      "used_for": "Architecture and flow diagrams in docs and audit reports"
     },
     {
-      "name": "PopHIVE",
-      "purpose": "Yale harmonised US public-health surveillance data",
+      "name": "Microsoft Learn",
+      "purpose": "Official Microsoft and Azure documentation search",
       "auth": "none",
-      "status": "connected",
-      "used_for": "Surveillance trends, vaccination coverage, comparisons"
-    },
-    {
-      "name": "PubMed",
-      "purpose": "Biomedical literature search and full text",
-      "auth": "none",
-      "status": "connected",
-      "used_for": "Literature review; the citation backbone of the paper auditors"
-    },
-    {
-      "name": "Canva",
-      "purpose": "Search, create, autofill and export Canva designs",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Figures and presentation material"
-    },
-    {
-      "name": "Cloudflare Developer Platform",
-      "purpose": "Workers, D1, R2, KV, Hyperdrive",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Deployment and edge storage for web projects"
-    },
-    {
-      "name": "Consensus",
-      "purpose": "Scientific literature search with claim-level evidence",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Evidence synthesis; complements PubMed and Elicit"
-    },
-    {
-      "name": "Demographic and Health Surveys",
-      "purpose": "DHS Program indicator data",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Population health indicators by country and survey"
-    },
-    {
-      "name": "Elicit",
-      "purpose": "Paper search, systematic review and extraction",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Systematic reviews and structured extraction"
-    },
-    {
-      "name": "Figma",
-      "purpose": "Design context, diagrams, design-to-code",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "UI work and architecture diagrams"
-    },
-    {
-      "name": "Hugging Face",
-      "purpose": "Hub models, datasets, Spaces, papers",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Model and dataset discovery for ML projects"
-    },
-    {
-      "name": "Notion",
-      "purpose": "Workspace search, pages and databases",
-      "auth": "oauth",
-      "status": "connected",
-      "used_for": "Durable notes, project tracking, documentation"
+      "used_for": "Grounding .NET / Azure answers in primary docs"
     },
     {
       "name": "Scholar Gateway",
       "purpose": "Scholarly search and citation enrichment",
       "auth": "oauth",
-      "status": "connected",
       "used_for": "Citation verification during paper audits"
     },
     {
-      "name": "Microsoft 365",
-      "purpose": "SharePoint, OneDrive, Outlook, Teams",
+      "name": "Notion",
+      "purpose": "Workspace search, pages and databases",
       "auth": "oauth",
-      "status": "installed_not_connected",
-      "note": "Present in the account but not authenticated and not enabled in chat. Connect it only if institutional documents are needed."
+      "used_for": "Durable notes, project tracking, documentation"
     },
     {
-      "name": "Monte Carlo",
-      "purpose": "Data and AI observability",
+      "name": "Google Drive",
+      "purpose": "Search, read and upload files",
       "auth": "oauth",
-      "status": "installed_not_connected",
-      "note": "Present in the account but not authenticated. Requires a Monte Carlo tenant."
+      "used_for": "Collaborator datasets, protocols and institutional documents"
+    },
+    {
+      "name": "Gmail",
+      "purpose": "Search, draft and summarise mail",
+      "auth": "oauth",
+      "used_for": "Correspondence with collaborators and journals"
+    },
+    {
+      "name": "Google Calendar",
+      "purpose": "Schedule and meeting coordination",
+      "auth": "oauth",
+      "used_for": "Scheduling"
+    },
+    {
+      "name": "Figma",
+      "purpose": "Design context, diagrams, design-to-code",
+      "auth": "oauth",
+      "used_for": "UI work and architecture diagrams"
+    },
+    {
+      "name": "Canva",
+      "purpose": "Search, create, autofill and export Canva designs",
+      "auth": "oauth",
+      "used_for": "Figures and presentation material"
+    },
+    {
+      "name": "Gamma",
+      "purpose": "AI-generated presentations, docs and sites",
+      "auth": "oauth",
+      "used_for": "Talks and project presentations"
+    },
+    {
+      "name": "Unsplash",
+      "purpose": "Free HD stock imagery",
+      "auth": "oauth",
+      "used_for": "Slide and document imagery"
+    },
+    {
+      "name": "Postman",
+      "purpose": "API collections, specs and mocks",
+      "auth": "oauth",
+      "used_for": "API context for the audit skill's contract lens"
+    },
+    {
+      "name": "Ahrefs",
+      "purpose": "SEO and AI-search analytics",
+      "auth": "oauth",
+      "used_for": "Not part of the core workflow; installed and connected"
+    },
+    {
+      "name": "Semrush",
+      "purpose": "SEO, keyword, traffic and competitor analytics",
+      "auth": "oauth",
+      "used_for": "Not part of the core workflow; installed and connected"
     }
-  ]
+  ],
+
+  "installed_unconfirmed": [
+    {
+      "name": "Elicit",
+      "purpose": "Paper search, systematic review and extraction",
+      "auth": "oauth",
+      "note": "Present on the account; auth state unknown and not enabled in chat. Authenticate it — it is the systematic-review half of the research set."
+    },
+    {
+      "name": "Sentry",
+      "purpose": "Error monitoring",
+      "auth": "oauth",
+      "note": "Present but unconfirmed. recommendations/connectors.md argues for this one: it is the half of repo-audit-fixer that says which findings reached real users."
+    },
+    {
+      "name": "Linear",
+      "purpose": "Issue and project tracking",
+      "auth": "oauth",
+      "note": "Present but unconfirmed. A home for the `open` findings an audit leaves behind."
+    },
+    {
+      "name": "Atlassian Rovo",
+      "purpose": "Jira and Confluence",
+      "auth": "oauth",
+      "note": "Present but unconfirmed. Connect only if institutional work lives in Jira/Confluence."
+    },
+    {
+      "name": "Slack",
+      "purpose": "Messages, canvases and workspace data",
+      "auth": "oauth",
+      "note": "Present but unconfirmed."
+    },
+    {
+      "name": "Intercom",
+      "purpose": "Customer support data",
+      "auth": "oauth",
+      "note": "Present but unconfirmed. No apparent use in this workspace — a candidate for removal."
+    },
+    {
+      "name": "S&P - Deterministic Retrieval",
+      "purpose": "S&P Global market data",
+      "auth": "oauth",
+      "note": "Present but unconfirmed. Requires an S&P entitlement — a candidate for removal."
+    },
+    {
+      "name": "WordPress.com",
+      "purpose": "Manage WordPress.com sites",
+      "auth": "oauth",
+      "note": "Present but unconfirmed."
+    }
+  ],
+
+  "not_installed": {
+    "$comment": [
+      "Named in docs/03-manual-setup-checklist.md Parts 1.3, 1.4 and 2, and absent from",
+      "the account as of this capture. The first five need no login — connecting them is",
+      "two clicks each and they carry most of the research value of this workspace."
+    ],
+    "authless": [
+      {"name": "bioRxiv", "directory_uuid": "7f750eb6-c3cb-47d7-9269-d35c43fe9925", "used_for": "Preprint discovery for vaccine and epidemiology work"},
+      {"name": "Clinical Trials", "directory_uuid": "c1754944-3ad1-49ab-bec5-9aeae3a6a9a3", "used_for": "Trial design, endpoint comparison, investigator search"},
+      {"name": "Open Targets", "directory_uuid": "097ab77c-338a-421c-8ba7-3960c928a540", "used_for": "Target-disease association evidence"},
+      {"name": "ICD-10 Codes", "directory_uuid": "bd8c051d-df35-44c0-a8b8-084b700e1f21", "used_for": "Diagnosis and procedure coding in clinical datasets"},
+      {"name": "PopHIVE", "directory_uuid": "cd7d9174-5546-440a-822d-1e9026e7334c", "used_for": "US surveillance trends and vaccination coverage"}
+    ],
+    "oauth": [
+      {"name": "Hugging Face", "directory_uuid": "37ed56d5-9d61-4fd4-ad00-b9134c694296", "used_for": "Model and dataset discovery for ML projects"},
+      {"name": "Consensus", "directory_uuid": "65247229-f0c7-49df-9044-fcbb8b3894c6", "used_for": "Claim-level evidence synthesis"},
+      {"name": "Demographic and Health Surveys", "directory_uuid": "9e5b81c6-d26f-43bb-9425-2d132ccdea40", "used_for": "Population health indicators by country and survey"},
+      {"name": "Cloudflare Developer Platform", "directory_uuid": "2d60210c-dd92-4be0-b09c-3662f10445c9", "used_for": "Workers, D1, R2, KV for web projects"},
+      {"name": "Microsoft 365", "directory_uuid": "ce0c9cda-5ea5-44c5-9cf2-40810dfa6582", "used_for": "SharePoint / OneDrive / Outlook, if institutional work lives there"},
+      {"name": "Supabase", "directory_uuid": "11ca66fc-1e98-49d5-ab9b-7cb4672a8f10", "used_for": "Real schema for the audit skill's DATA lens, if a project uses it"},
+      {"name": "Vercel", "directory_uuid": "7eb42afe-0087-4493-a105-da2b021d5c03", "used_for": "Build and deployment logs, if a project deploys there"}
+    ],
+    "absent_from_directory": [
+      {"name": "Monte Carlo", "note": "Listed in the previous snapshot as installed. It is not on the account and did not surface in a registry search. Treated as never installed."}
+    ]
+  }
 }

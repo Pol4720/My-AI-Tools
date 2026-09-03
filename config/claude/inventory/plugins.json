@@ -1,19 +1,78 @@
 {
   "$comment": [
     "Snapshot of the plugins enabled on the claude.ai account of Pol4720.",
-    "Captured 2026-09-03 from the live account (ListPlugins): none were enabled.",
+    "Re-captured 2026-09-03 from the live account (ListPlugins): still none enabled.",
     "Plugins bundle skills, slash commands, hooks, agents and MCP servers. They are",
-    "installed from a marketplace at claude.ai and cannot be installed from a file —",
-    "see config/claude/recommendations/plugins.md for the ones worth adding and why."
+    "installed from a marketplace at claude.ai (or with /plugin in Claude Code) and",
+    "cannot be installed from a file — this inventory records the decision, not the",
+    "mechanism.",
+    "",
+    "`recommended_not_installed` below was verified against the live catalogue with",
+    "SearchPlugins: all four exist in knowledge-work-plugins, all four are available on",
+    "this account, and none is enabled. The plugin ids are stable and are recorded so a",
+    "later session can confirm it installed the same thing this one recommended.",
+    "Rationale for each: config/claude/recommendations/plugins.md."
   ],
   "captured_at": "2026-09-03",
+  "captured_with": "ListPlugins + SearchPlugins, from a live Claude Code session",
   "account": "Pol4720 (Richard Matos)",
   "enabled": [],
   "marketplaces_visible": [
     {
       "name": "knowledge-work-plugins",
       "id": "marketplace_01QRn9XAjzzeAokB5nPWVMxP",
-      "note": "The default Anthropic marketplace. Every recommendation in recommendations/plugins.md comes from it."
+      "note": "The default Anthropic marketplace. Every recommendation below comes from it."
+    }
+  ],
+  "recommended_not_installed": [
+    {
+      "priority": 1,
+      "name": "engineering",
+      "plugin_id": "plugin_01FTLa86dhbVJ3HB1LdHdhN7",
+      "reach": "remote",
+      "why": "The daily-driver pass. Composes with repo-audit-fixer rather than competing with it: the audit skill is the once-per-milestone deep pass, these are the small ones run constantly.",
+      "skills": [
+        "engineering:architecture", "engineering:code-review", "engineering:debug",
+        "engineering:deploy-checklist", "engineering:documentation",
+        "engineering:incident-response", "engineering:standup",
+        "engineering:system-design", "engineering:tech-debt", "engineering:testing-strategy"
+      ],
+      "bundled_mcp_servers": ["asana", "atlassian", "datadog", "github", "gmail", "google calendar", "linear", "notion", "pagerduty", "slack"]
+    },
+    {
+      "priority": 2,
+      "name": "security-guidance",
+      "plugin_id": "plugin_01YBNfaNwQztYsnUydt8m47G",
+      "reach": "privileged",
+      "why": "Closes the loop repo-audit-fixer opens: catches injection, XSS, SSRF, hardcoded secrets and 25+ other classes at write time rather than at audit time. Maps onto the SEC-* categories of the audit taxonomy.",
+      "hooks": ["SessionStart", "UserPromptSubmit", "PostToolUse", "Stop"],
+      "note": "Privileged reach. Its hooks inspect code as it is written — that is what makes it useful, and it is worth knowing before enabling it."
+    },
+    {
+      "priority": 3,
+      "name": "data",
+      "plugin_id": "plugin_01VTbvGZYaCVU2CNSvhDCnkg",
+      "reach": "remote",
+      "why": "Statistical analysis, dataset validation and SQL. data:validate-data targets the defect class that does the most damage in research code — a data-integrity problem that produces a plausible wrong number.",
+      "skills": [
+        "data:analyze", "data:build-dashboard", "data:create-viz",
+        "data:data-context-extractor", "data:data-visualization", "data:explore-data",
+        "data:sql-queries", "data:statistical-analysis", "data:validate-data", "data:write-query"
+      ],
+      "bundled_mcp_servers_to_skip": ["amplitude", "bigquery", "databricks", "snowflake", "hex", "definite"]
+    },
+    {
+      "priority": 4,
+      "name": "bio-research",
+      "plugin_id": "plugin_01DZdK2sP1iWnY1hRYRcFc9W",
+      "reach": "remote",
+      "why": "Life-sciences R&D tooling. Adds skills rather than connections — its ChEMBL and PubMed servers are already connected on this account.",
+      "skills": [
+        "bio-research:nextflow-development", "bio-research:scientific-problem-selection",
+        "bio-research:single-cell-rna-qc", "bio-research:scvi-tools",
+        "bio-research:instrument-data-to-allotrope", "bio-research:start"
+      ],
+      "bundled_mcp_servers": ["benchling", "biorender", "biorxiv", "c-trials", "chembl", "consensus", "ot", "owkin", "pubmed", "synapse", "wiley"]
     }
   ]
 }
