@@ -2,17 +2,15 @@
 name: repo-audit-fixer
 description: >
   Audits an entire software repository like a hostile QA engineer, security reviewer and staff engineer at
-  once, then fixes everything it finds and proves the fix. Reads the docs and the code, gets the software
-  actually running, exercises it, hunts bugs, missing implementations, silent failures, security holes,
-  broken contracts, dead configuration and untested paths, then repairs them in dependency order and leaves
-  the full quality gate green. Any language or stack — Python, TypeScript/JavaScript, Java, C#, Go, Rust,
-  C/C++, PHP, Ruby, Kotlin, Swift, SQL, shell, Terraform, Docker/Kubernetes.
-  Use whenever the user points at a repository, service, app, library, notebook or directory and asks to
-  audit, review, QA, harden, debug, stabilise, complete, finish, polish, "leave it impeccable", "find every
-  bug", "what's wrong with this", "is this production ready", "prepare this for deployment", or hands over
-  a bug report, a crash, a failing pipeline or a pre-release checklist. Trigger on a bare repository path or
-  name, on "audita este repo", "arregla todo", "revisa mi software", and on requests that name only one
-  symptom — the audit reveals what actually matters.
+  once, then fixes everything found and proves the fix. Reads the docs and code, runs the software, exercises
+  it, hunts bugs, missing implementations, silent failures, security holes, broken contracts and untested
+  paths, then repairs them in dependency order and leaves the full quality gate green. Any stack — Python,
+  TypeScript/JavaScript, Java, C#, Go, Rust, C/C++, PHP, Ruby, Kotlin, Swift, SQL, shell, Terraform,
+  Docker/Kubernetes. Use whenever the user points at a repository, service, app, library or directory and
+  asks to audit, review, QA, harden, debug, stabilise, complete, polish, "leave it impeccable", "find every
+  bug", "is this production ready", "prepare this for deployment", or hands over a bug report or a crash.
+  Trigger on a bare repository path, on "audita este repo", "arregla todo", "revisa mi software", and on
+  requests naming only one symptom — the audit reveals what matters.
 license: Proprietary — © Richard Matos (Pol4720). See repository LICENSE.
 ---
 

@@ -30,7 +30,11 @@ from pathlib import Path
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 MAX_NAME = 64
 MIN_DESCRIPTION = 60
-MAX_DESCRIPTION = 4000
+# claude.ai's own skill-upload validator rejects a description over 1024 characters
+# (confirmed against the official skill-creator packager). A repository limit looser than
+# the platform's is worse than none: it lets a skill validate green here and still get
+# rejected on upload, silently, with no way to tell which of the two disagreed.
+MAX_DESCRIPTION = 1024
 MAX_SKILL_MD_LINES = 500
 
 SECRET_PATTERNS = [
