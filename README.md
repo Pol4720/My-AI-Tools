@@ -23,7 +23,7 @@ file can never rebuild.
 git clone https://github.com/Pol4720/My-AI-Tools.git
 cd My-AI-Tools
 ./scripts/install_skills.sh          # symlink every skill into ~/.claude/skills/
-python3 scripts/validate_skills.py   # confirm all four are healthy
+python3 scripts/validate_skills.py   # confirm every skill is healthy
 ```
 
 Start a new Claude Code session and, without naming any skill:
@@ -83,7 +83,7 @@ Why it is shaped this way: [`docs/01-repository-architecture.md`](docs/01-reposi
 
 ## The configuration half
 
-[`config/claude/`](config/claude/) declares the workspace: eighteen MCP connectors, the
+[`config/claude/`](config/claude/) declares the workspace: 23 MCP connectors, the
 enabled skills, the plugins, the Claude Code settings and hooks — what each is for, and
 whether it can be restored from a file.
 

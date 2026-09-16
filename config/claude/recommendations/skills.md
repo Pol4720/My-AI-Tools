@@ -1,6 +1,6 @@
 # Recommended skills
 
-Eight Anthropic built-in skills are enabled on the account, four skills are owned and live
+Eight Anthropic built-in skills are enabled on the account, three skills are owned and live
 in this repository, and the Claude Code harness ships another sixteen that need no
 enabling at all. The gaps are small — and most of what is missing is better written than
 installed, because a skill that encodes *your* standards beats a generic one.

@@ -54,7 +54,7 @@ ends up half-configured and failing quietly.
 
 ### 3. Only owned skills are vendored
 
-`skills/` holds the four skills authored by Pol4720 and nothing else.
+`skills/` holds the skills authored by Pol4720 and nothing else.
 
 Anthropic's built-in skills — `pdf`, `xlsx`, `docx`, `pptx`, `skill-creator`,
 `canvas-design`, `import-memory`, `morning` — are **not** copied here. They are Anthropic's,

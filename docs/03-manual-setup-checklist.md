@@ -22,7 +22,7 @@ Do this first; it needs nothing but the repository.
 git clone https://github.com/Pol4720/My-AI-Tools.git
 cd My-AI-Tools
 ./scripts/install_skills.sh          # symlinks every skill into ~/.claude/skills/
-python3 scripts/validate_skills.py   # confirms all four are healthy
+python3 scripts/validate_skills.py   # confirms every owned skill is healthy
 
 cp config/claude/settings/settings.user.json ~/.claude/settings.json
 ```
@@ -70,6 +70,7 @@ upload:
 - [ ] PopHIVE
 - [ ] ICD-10 Codes
 - [ ] CMS Coverage
+- [ ] ChEMBL
 
 ### 1.4 Connect the OAuth connectors
 
@@ -86,6 +87,14 @@ Each opens a login window for that platform. **You must have an account on each 
 | [ ] Figma | Figma account | Design context, diagrams |
 | [ ] Canva | Canva account | Figures, presentation material |
 | [ ] Cloudflare Developer Platform | Cloudflare account | Workers, D1, R2, KV |
+| [ ] BioRender | BioRender account | Scientific figures |
+| [ ] Owkin | Owkin account | AI agents for biology |
+| [ ] Synapse.org | Synapse account | Scientific dataset search and metadata |
+
+A connector already showing as connected but marked `needs_reconnect` in
+[`../config/claude/inventory/connectors.json`](../config/claude/inventory/connectors.json)
+(currently Cloudflare, Owkin and Synapse.org) needs the same Connect button pressed again —
+the OAuth grant lapsed, it was not removed.
 
 ### 1.5 Install the plugins · claude.ai → Settings → Plugins
 
@@ -117,8 +126,8 @@ Full reasoning in
 - [ ] **Supabase** — if a project uses it. Gives the audit skill the real schema.
 - [ ] **Vercel** — if a project deploys there.
 - [ ] **Google Drive** — for collaborator files.
-- [ ] **Remove Monte Carlo** — installed, never authenticated, needs a tenant that does
-      not exist. Removing it keeps the connector list honest.
+- [ ] **Monte Carlo** — a connection attempt was started and left incomplete. Finish it if
+      a Monte Carlo tenant exists; otherwise remove the connector so the list stays honest.
 
 ---
 
@@ -137,7 +146,7 @@ Full reasoning in
 
 Do not skip this. A half-configured workspace fails quietly.
 
-- [ ] `python3 scripts/validate_skills.py` → 4 skills valid
+- [ ] `python3 scripts/validate_skills.py` → 3 skills valid
 - [ ] In a fresh Claude session: *"List my enabled skills, plugins and connectors."*
       Compare against [`config/claude/inventory/`](../config/claude/inventory/).
 - [ ] Trigger a skill without naming it — e.g. *"audit this repository"* should reach

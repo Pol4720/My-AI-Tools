@@ -8,7 +8,7 @@
     "with \"auth\": \"oauth\" additionally require an interactive login that only the",
     "account owner can perform. See docs/03-manual-setup-checklist.md."
   ],
-  "captured_at": "2026-09-03",
+  "captured_at": "2026-09-16",
   "account": "Pol4720 (Richard Matos)",
   "plan": "Claude Pro",
   "source": "claude.ai connector directory",
@@ -63,6 +63,46 @@
       "used_for": "Literature review; the citation backbone of the paper auditors"
     },
     {
+      "name": "ChEMBL",
+      "purpose": "EMBL-EBI database of bioactive drug-like compounds — bioactivity, targets, mechanisms, ADMET",
+      "auth": "none",
+      "status": "connected",
+      "added": "2026-09-16",
+      "used_for": "Drug discovery and target-compound analysis alongside Open Targets"
+    },
+    {
+      "name": "BioRender",
+      "purpose": "Scientific figure library and generation",
+      "auth": "oauth",
+      "status": "connected",
+      "added": "2026-09-16",
+      "used_for": "Publication and presentation figures for vaccine/epidemiology work"
+    },
+    {
+      "name": "Owkin",
+      "purpose": "AI agents built for biology",
+      "auth": "oauth",
+      "status": "needs_reconnect",
+      "added": "2026-09-16",
+      "note": "Connected once, then the auth lapsed. Re-authorise at claude.ai > Settings > Connectors to use it."
+    },
+    {
+      "name": "Synapse.org",
+      "purpose": "Search and metadata for Synapse scientific datasets",
+      "auth": "oauth",
+      "status": "needs_reconnect",
+      "added": "2026-09-16",
+      "note": "Connected once, then the auth lapsed. Re-authorise at claude.ai > Settings > Connectors to use it."
+    },
+    {
+      "name": "github",
+      "purpose": "Repository access — issues, PRs, code search, file operations",
+      "auth": "oauth",
+      "status": "connected_not_enabled_in_chat",
+      "added": "2026-09-16",
+      "note": "Connected at the account level but toggled off for this chat's connector settings, so its tools are not loaded here. This repository's git and PR operations go through the separate Claude Code GitHub MCP server (see docs), which is unaffected."
+    },
+    {
       "name": "Canva",
       "purpose": "Search, create, autofill and export Canva designs",
       "auth": "oauth",
@@ -73,7 +113,8 @@
       "name": "Cloudflare Developer Platform",
       "purpose": "Workers, D1, R2, KV, Hyperdrive",
       "auth": "oauth",
-      "status": "connected",
+      "status": "needs_reconnect",
+      "note": "Was connected as of 2026-09-03; the auth has since lapsed. Re-authorise at claude.ai > Settings > Connectors before relying on it again.",
       "used_for": "Deployment and edge storage for web projects"
     },
     {
@@ -136,8 +177,8 @@
       "name": "Monte Carlo",
       "purpose": "Data and AI observability",
       "auth": "oauth",
-      "status": "installed_not_connected",
-      "note": "Present in the account but not authenticated. Requires a Monte Carlo tenant."
+      "status": "connect_incomplete",
+      "note": "A connection attempt was started and left unfinished. Requires a Monte Carlo tenant — if none exists, remove this connector instead of leaving it half-configured."
     }
   ]
 }

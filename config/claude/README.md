@@ -33,7 +33,7 @@ This is the thing worth understanding before anything else.
 
 **Not reproducible from any file, ever:**
 
-- claude.ai connectors. Each is added in the web UI, and sixteen of the eighteen need an
+- claude.ai connectors. Each is added in the web UI, and fifteen of the twenty-three need an
   interactive OAuth login.
 - claude.ai plugins. Installed from a marketplace in the web UI.
 - Built-in Anthropic skills. Toggled per account under Settings → Capabilities.

@@ -11,7 +11,7 @@ other, and knowing which one you are configuring saves a lot of confusion.
 | **Reproducible from a file** | No — added in the web UI | **Yes** — commit `.mcp.json` |
 | **Recorded in this repo** | [`../inventory/connectors.json`](../inventory/connectors.json) | [`mcp.servers.json`](mcp.servers.json) |
 
-The account's eighteen connectors are all of the first kind. This directory covers the
+The account's 23 connectors are all of the first kind. This directory covers the
 second — the escape hatch for anything the connector directory does not offer: a local
 database, a self-hosted tool, a community server.
 

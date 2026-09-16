@@ -5,6 +5,36 @@ versioning is date-based, because a workspace is not a released library.
 
 ## [Unreleased]
 
+## [2026-09-16] — Description length fix; connector inventory refresh
+
+### Fixed
+
+- **`repo-audit-fixer`: `description` exceeded claude.ai's own skill-upload limit.**
+  claude.ai's skill validator rejects a `description` over 1024 characters; this skill's
+  was 1169. The skill was correct and useful in every way that mattered locally —
+  `scripts/validate_skills.py` passed it clean — and still could not be uploaded, because
+  this repository's own length check was set to 4000, far looser than the platform it was
+  meant to guard. Tightened the description to 1004 characters, preserving both trigger
+  halves (what it does, when to use it, in English and Spanish), and corrected
+  `MAX_DESCRIPTION` in the validator to 1024 so the same gap cannot reopen silently.
+  Verified by re-running the skill through the official `skill-creator` packager, which now
+  reports the package valid.
+
+### Changed
+
+- `config/claude/inventory/connectors.json` refreshed against the live account: added
+  ChEMBL, BioRender, Owkin, Synapse.org and the account's own GitHub connector (23
+  connectors total, up from 18); recorded that Cloudflare Developer Platform, Owkin and
+  Synapse.org need re-authorisation (`needs_reconnect` — each worked once and the grant has
+  since lapsed), and that the Monte Carlo connection attempt was started and left
+  incomplete.
+- `config/claude/recommendations/connectors.md` updated to match: the four newly connected
+  bio-research connectors (three working, one — Owkin plus Synapse.org — needing a second
+  authorisation pass) make that recommendation's plugin-bundled connector story redundant
+  for this account.
+- `docs/03-manual-setup-checklist.md`, `docs/01-repository-architecture.md`, `README.md`
+  and `config/claude/README.md` updated to the current connector and skill counts.
+
 ## [2026-09-03] — Initial workspace
 
 The repository goes from empty to a complete, declared workspace.

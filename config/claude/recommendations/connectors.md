@@ -1,10 +1,10 @@
 # Recommended connectors
 
-Eighteen connectors are already installed (see
+Twenty-three connectors are installed (see
 [`../inventory/connectors.json`](../inventory/connectors.json)), and the research side of
 the workspace is genuinely well covered — PubMed, bioRxiv, Consensus, Elicit, Scholar
-Gateway, Clinical Trials, Open Targets, PopHIVE, DHS and ICD-10 is a strong set for
-vaccine and epidemiology work.
+Gateway, Clinical Trials, Open Targets, ChEMBL, BioRender, PopHIVE, DHS and ICD-10 is a
+strong set for vaccine, epidemiology and drug-discovery-adjacent work.
 
 The gaps are on the **engineering operations** side. These are the ones worth adding, with
 the reason and the honest cost.
@@ -12,6 +12,36 @@ the reason and the honest cost.
 **How to add one.** claude.ai → Settings → Connectors → Browse → Connect. Every connector
 below needs an interactive OAuth login that only the account owner can perform — see
 [`docs/03-manual-setup-checklist.md`](../../../docs/03-manual-setup-checklist.md).
+
+---
+
+## Recently added — finish authorising these
+
+Four connectors were added to the account since the last inventory snapshot. Two came
+through clean; two stalled mid-authorisation and need a second pass.
+
+| Connector | Status | Action |
+|---|---|---|
+| **ChEMBL** | connected, no auth needed | Nothing — ready to use alongside Open Targets for target–compound work |
+| **BioRender** | connected | Nothing — ready to use for publication and presentation figures |
+| **Owkin** | `needs_reconnect` | Re-authorise at claude.ai → Settings → Connectors. The OAuth grant lapsed after the initial connection |
+| **Synapse.org** | `needs_reconnect` | Same — re-authorise; the grant lapsed after the initial connection |
+
+These four are exactly the bio-research connector set this file previously recommended
+bundling through the `bio-research` plugin — they are now connected directly, which makes
+that plugin's own connector story redundant for this account (its skills are still worth
+having; see [`skills.md`](skills.md)).
+
+One existing connector also needs re-authorising, unrelated to the additions above:
+
+| Connector | Status | Action |
+|---|---|---|
+| **Cloudflare Developer Platform** | `needs_reconnect` | Was connected as of the last snapshot; the grant has since lapsed. Re-authorise if any project still deploys there |
+
+And the account's own **GitHub** connector is authenticated but toggled off for chat use
+(`connected_not_enabled_in_chat`) — this is separate from the Claude Code GitHub MCP server
+this repository's git operations already use, so nothing here needs fixing unless you
+specifically want GitHub tools available inside ordinary claude.ai conversations too.
 
 ---
 
@@ -58,12 +88,13 @@ this way far more often than through GitHub.
 
 ## Already installed, worth actually connecting
 
-Two connectors sit on the account without being authenticated:
+Two connectors still sit on the account without a working authentication — see the
+recently-added table above for the two that lapsed after working once:
 
 | Connector | Decision |
 |---|---|
 | **Microsoft 365** | Connect **if** DICEI / Instituto Finlay work lives in SharePoint, OneDrive or Outlook. It is the single highest-value connection for institutional work, and it is already half-installed. |
-| **Monte Carlo** | Leave it. It requires a Monte Carlo tenant, and there is no sign of one. Remove it from the account to keep the list honest. |
+| **Monte Carlo** | A connection attempt was started (`connect_incomplete`) and not finished. Either complete it if a Monte Carlo tenant exists, or remove the connector — a half-configured entry is worse than no entry, because it looks connected until something tries to use it. |
 
 ---
 
